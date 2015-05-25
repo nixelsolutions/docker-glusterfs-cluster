@@ -25,6 +25,10 @@ fi
 # Join the cluster - choose a suitable container
 ALIVE=0
 for PEER in `echo ${GLUSTER_PEERS} | sed "s/,/ /g"`; do
+   # Skip myself
+   if [ "${COREOS_PRIVATE_IPV4}" == "${PEER}" ]; then
+      continue
+   fi
    echo "=> Checking if I can reach gluster container ${PEER} ..."
    if ping -c 10 ${PEER} >/dev/null 2>&1; then
       echo "=> Gluster container ${PEER} is alive"
