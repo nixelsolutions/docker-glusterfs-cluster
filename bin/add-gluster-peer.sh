@@ -39,12 +39,7 @@ if [ ${NUMBER_OF_PEERS} -eq 0 ]; then
       exit 1
    else
    echo "=> Creating GlusterFS volume ${GLUSTER_VOL}..."
-   MY_IP=`ip add | grep brd | grep inet | awk '{print $2}' | sed "s/\/.*//g"`
-   if [ -z ${MY_IP} ]; then
-      echo "*** ERROR getting this container IP - Exiting ..."
-      exit 1
-   fi
-   gluster volume create ${GLUSTER_VOL} replica ${NUMBER_OF_REPLICAS} ${MY_IP}:${GLUSTER_BRICK_PATH} ${PEER}:${GLUSTER_BRICK_PATH} force
+   gluster volume create ${GLUSTER_VOL} replica ${NUMBER_OF_REPLICAS} ${COREOS_PRIVATE_IPV4}:${GLUSTER_BRICK_PATH} ${PEER}:${GLUSTER_BRICK_PATH} force
 
    sleep 1
 

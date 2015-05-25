@@ -41,12 +41,7 @@ if [ "$ALIVE" == 0 ]; then
 fi
 
 echo "=> Joining cluster with container ${PEER} ..."
-MY_IP=`ip add | grep brd | grep inet | awk '{print $2}' | sed "s/\/.*//g"`
-if [ -z ${MY_IP} ]; then
-   echo "*** ERROR getting this container IP - Exiting ..."
-   exit 1
-fi
-ssh ${SSH_OPTS} ${SSH_USER}@${PEER} "add-gluster-peer.sh ${MY_IP}"
+ssh ${SSH_OPTS} ${SSH_USER}@${PEER} "add-gluster-peer.sh ${COREOS_PRIVATE_IPV4}"
 if [ $? -eq 0 ]; then
    echo "=> Successfully joined cluster with container ${GLUSTER_PEER} ..."
 else

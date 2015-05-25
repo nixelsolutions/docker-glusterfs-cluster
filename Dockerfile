@@ -15,6 +15,7 @@ ENV SSH_PORT 2222
 ENV SSH_OPTS ["-p ${SSH_PORT} -o ConnectTimeout=4 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"]
 ENV GLUSTER_VOL shared
 ENV GLUSTER_BRICK_PATH /gluster/${GLUSTER_VOL}
+ENV COREOS_PRIVATE_IPV4
 ENV DEBUG 0
 
 VOLUME ["/gluster/${GLUSTER_VOL}"]
