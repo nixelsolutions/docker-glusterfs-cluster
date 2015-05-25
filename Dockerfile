@@ -10,7 +10,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     apt-get install -y glusterfs-server supervisor openssh-server
 
-ENV GLUSTER_PEERS 172.31.24.32,172.31.24.33,172.31.24.34 
+ENV GLUSTER_PEERS 10.86.76.254,10.107.97.236
 ENV SSH_PORT 2222
 ENV SSH_OPTS ["-p ${SSH_PORT} -o ConnectTimeout=4 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"]
 ENV GLUSTER_VOL storage
