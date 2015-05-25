@@ -20,6 +20,12 @@ ENV DEBUG 0
 VOLUME ["/gluster/${GLUSTER_VOL}"]
 
 EXPOSE ${SSH_PORT}
+EXPOSE 24007
+EXPOSE 24008
+EXPOSE 24009
+EXPOSE 49152
+EXPOSE 111
+EXPOSE 111/udp
 
 RUN mkdir -p /var/run/sshd /root/.ssh /var/log/supervisor
 RUN perl -p -i -e "s/^Port .*/Port ${SSH_PORT}/g" /etc/ssh/sshd_config
