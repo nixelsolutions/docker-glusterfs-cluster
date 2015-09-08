@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-MAINTAINER Usability Dynamics, Inc. "http://usabilitydynamics.com"
+MAINTAINER Manel Martinez "manel@nixelsolutions.com"
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
